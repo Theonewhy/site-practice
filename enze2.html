@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>整活漫画详情页</title>
+    <link rel="stylesheet" href="css/enze2.css">
+  </head>
+
+  <body>
+    <main class="phone-page">
+      <!-- 顶部封面区 -->
+      <section class="hero">
+<img class="cover-img" src="images/enze.jpg" alt="漫画封面">
+
+        <div class="hero-overlay">
+          <h1>地铁站的恩泽～</h1>
+          <p class="author">作者：asimplepumpkin</p>
+        </div>
+      </section>
+
+      <!-- 继续阅读按钮 -->
+      <button class="read-btn">继续阅读</button>
+
+      <!-- Tab 按钮 -->
+      <nav class="tab-buttons">
+        <button class="tab-btn active" data-tab="intro">漫画介绍</button>
+        <button class="tab-btn" data-tab="chapters">目录</button>
+        <button class="tab-btn" data-tab="comments">评论</button>
+      </nav>
+
+      <!-- Tab 内容区 -->
+      <section class="tab-content active" id="intro">
+        <div class="stats">
+          <div class="stat-item">
+            <span>♡</span>
+            <p>2.4K 喜欢</p>
+          </div>
+
+          <div class="stat-item">
+            <span>💬</span>
+            <p id="commentStat">0 评论</p>
+          </div>
+
+          <div class="stat-item">
+            <span>👁</span>
+            <p>15.2K 观看</p>
+          </div>
+
+          <div class="stat-item">
+            <span>🔖</span>
+            <p>收藏</p>
+          </div>
+
+          <div class="stat-item">
+            <span>⬇</span>
+            <p>下载</p>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <h2>作品信息</h2>
+          <p><strong>作品名：</strong>地铁站的恩泽～</p>
+          <p><strong>作者：</strong>asimplepumpkin</p>
+          <p><strong>编号：</strong>JM1451659</p>
+        </div>
+
+        <div class="info-block">
+          <h2>标签</h2>
+
+          <div class="tag-list">
+            <span class="tag">#asimplepumpkin</span>
+            <span class="tag">#daily life</span>
+            <span class="tag">#subway</span>
+            <span class="tag">#force</span>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <h2>描述</h2>
+          <p>
+            一个平常的下午，恩泽像往常一样坐地铁回家，只是没想到这次居然遇到了……，可怜的恩则会如何应对呢？
+          </p>
+        </div>
+      </section>
+
+      <section class="tab-content" id="chapters">
+        <h2>目录</h2>
+
+        <div class="chapter-list" id="chapterList"></div>
+      </section>
+
+      <section class="tab-content" id="comments">
+        <h2>评论区</h2>
+
+        <form id="commentForm" class="comment-form">
+          <div class="form-group">
+            <label for="nameInput">名字</label>
+            <input id="nameInput" type="text" placeholder="请输入名字">
+          </div>
+
+          <div class="form-group">
+            <label for="commentInput">评论</label>
+            <textarea id="commentInput" placeholder="请输入评论"></textarea>
+          </div>
+
+          <button type="submit">提交评论</button>
+        </form>
+
+        <p id="commentCount">当前共有 0 条评论</p>
+
+        <div id="commentList"></div>
+      </section>
+    </main>
+
+    <script src="js/enze2.js"></script>
+  </body>
+</html>

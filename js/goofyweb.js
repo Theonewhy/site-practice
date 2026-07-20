@@ -77,3 +77,30 @@ messageForm.addEventListener("submit", function(event) {
   nameInput.value = "";
   messageInput.value = "";
 });
+
+//找到所有class="tab-btn"的按钮
+//找到所有 class="tab-content" 的内容区
+const tabButtons = document.querySelectorAll(".tab-btn");
+const tabContents = document.querySelectorAll(".tab-content");
+
+//给每个按钮加事件
+tabButtons.forEach(function(button) {
+  button.addEventListener("click", function() {
+    //获取这个按钮对应内容id
+    const targetTab = button.dataset.tab;
+    //先移除所有active
+    tabButtons.forEach(function(btn) {
+      btn.classList.remove("active");
+    });
+
+    tabContents.forEach(function(content) {
+      content.classList.remove("active");
+    });
+    //再点亮当前active
+    button.classList.add("active");
+    //找到对应内容区并展示
+    const targetContent = document.getElementById(targetTab);
+    targetContent.classList.add("active");
+  });
+});
+
