@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>jmcomic</title>
+        <link rel="stylesheet" href="goofyweb.css">
+    </head>
+
+    <body>
+        <section id="hero" class="hero section-card">
+            <div class="hero-text">
+                <h1 id="mainTitle">欢迎来到帅哥的网站！</h1>
+
+                <p id="introText">
+                    这双眼睛，能看透黑暗
+                </p>
+
+                <button id="darkModeBtn">切换深色模式</button>
+            </div>
+        </section>
+        <nav class="navbar">
+            <h2 class="logo">首页</h2>
+
+            <div class="nav-links">
+                <a href="#">分类专区</a>
+                <a href="#">排行榜</a>
+                <a href="#">最近更新</a>
+                <a href="#">搜索</a>
+            </div>
+        </nav>
+
+        <h2>~地铁站的恩泽~</h2>
+
+        <img src="mez.jpg" alt="图片丢失！" width="400">
+
+        <div class="section">
+            <h2>#标签</h2>
+            <div class="types">
+                <span class="type">#violence</span>
+                <span class="type">#latest version</span>
+                <span class="type">#DK</span>
+                <span class="type">#1v3</span>
+            </div>
+        </div>
+
+        <main class='container'>
+            <h2>留言板</h2>
+
+            <section class='card'>
+                <h3>善语结善缘，恶语伤人心</h3>
+
+                <form id ="messageForm">
+                <div class='form-group'>
+                    <label for="nameInput">名字</label>
+                    <input id="nameInput" type="text" placeholder="请输入名字">
+                </div>
+
+                <div class="form-group">
+                    <label for="messageInput">留言</label>
+                    <input id="messageInput" type="text" placeholder="请输入留言">
+                </div>
+
+                <button type="submit">提交留言</button>
+                </form>
+            </section>
+
+            <section class="card">
+                <h2>留言列表</h2>
+                <div id="messageList"></div>
+            </section>
+        </main>
+        
+        <script src="goofyweb.js"></script>
+    </body>
+
+
+</html>
