@@ -1,0 +1,184 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333;
+}
+
+#game-container {
+    width: 100%;
+    max-width: 600px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+/* 顶部画面区域 */
+#scene {
+    height: 300px;
+    background-color: #e0f7fa;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #ccc;
+    overflow: hidden; /* 防止水位溢出容器 */
+}
+
+/* 柱子，贯穿整个场景 */
+#pole {
+    width: 20px;
+    height: 100%;
+    background-color: #795548;
+    position: absolute;
+    bottom: 0;
+}
+
+/* 小人容器：与展示框架顶部对齐 */
+#character {
+    position: absolute;
+    top: 0; /* 需求1：小人顶部跟展示部分框架的顶部对齐 */
+    z-index: 2;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+#char-emoji {
+    font-size: 60px;
+}
+
+#char-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px; /* 稍微给点圆角 */
+    border: 2px solid #333;
+    background-color: white;
+}
+
+/* 水位 */
+#water {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%; /* 从 0% 到 100% */
+    background-color: rgba(33, 150, 243, 0.7);
+    z-index: 3;
+    transition: height 1s ease-in-out;
+}
+
+/* 交互语录气泡 */
+#dialogue-bubble {
+    position: absolute;
+    top: 20px;
+    left: 20px; /* 放到左侧，避免挡住中间的小人 */
+    background: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 2px solid #333;
+    font-weight: bold;
+    z-index: 4;
+    max-width: 40%;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#dialogue-bubble::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    margin-top: -10px;
+    border-width: 10px 0 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent #333;
+}
+
+/* 中间部分 */
+#controls {
+    padding: 20px;
+    text-align: center;
+}
+
+#word-display {
+    font-size: 32px;
+    letter-spacing: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+#input-area {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    width: 200px;
+    text-transform: lowercase;
+}
+
+button, .upload-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: inline-block;
+}
+
+button:hover, .upload-btn:hover { background-color: #45a049; }
+button:disabled { background-color: #ccc; cursor: not-allowed; }
+
+#settings-area {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.upload-btn {
+    background-color: #ff9800;
+}
+.upload-btn:hover {
+    background-color: #e68a00;
+}
+
+/* 底部区域 */
+#status-area {
+    background-color: #f9f9f9;
+    padding: 15px 20px;
+    font-size: 14px;
+}
+
+#wrong-guesses {
+    color: #d32f2f;
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
+#stats {
+    margin-top: 10px;
+    color: #555;
+    display: flex;
+    justify-content: space-between;
+}

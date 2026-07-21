@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拯救小人 - 猜词游戏 (重构版)</title>
+    <link rel="stylesheet" href="css/save_guys.css">
+</head>
+<body>
+
+    <div id="game-container">
+        <!-- 顶部画面 -->
+        <div id="scene">
+            <div id="dialogue-bubble">救救我！快猜出单词！</div>
+            <div id="pole"></div>
+            <!-- 小人容器 -->
+            <div id="character">
+                <span id="char-emoji">🥺</span>
+                <img id="char-img" src="" alt="上传的人物照" style="display:none;">
+            </div>
+            <div id="water"></div>
+        </div>
+
+        <!-- 中间控制与单词 -->
+        <div id="controls">
+            <div id="word-display">_ _ _ _</div>
+            <div id="input-area">
+                <input type="text" id="guess-input" placeholder="输入字母或单词..." autocomplete="off">
+                <button id="guess-btn">猜测</button>
+            </div>
+            <div id="settings-area">
+                <label for="photo-upload" class="upload-btn">上传小人照片</label>
+                <input type="file" id="photo-upload" accept="image/*" style="display: none;">
+                <button id="restart-btn" style="display: none; background-color: #2196F3;">再玩一次</button>
+            </div>
+        </div>
+
+        <!-- 底部状态与记录 -->
+        <div id="status-area">
+            <div>已猜错的内容: <span id="wrong-guesses">无</span></div>
+            <div id="stats">
+                <span id="lives-text">剩余机会: 0</span>
+                <span id="water-text">当前水位: 0/5</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入数据和逻辑脚本 -->
+    <script src="js/save_guys_data.js"></script>
+    <script src="js/save_guys.js"></script>
+</body>
+</html>
