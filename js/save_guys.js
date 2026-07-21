@@ -69,7 +69,7 @@ function updateCharacterEmotion(emotionStr) {
 // 初始化游戏
 function initGame() {
     targetWord = gameData.wordList[Math.floor(Math.random() * gameData.wordList.length)];
-    maxLives = targetWord.length * 2;
+    maxLives = targetWord.length * 3;
     currentLives = maxLives;
     wrongGuesses = [];
     revealedWord = Array(targetWord.length).fill(false);
@@ -109,12 +109,15 @@ function updateDisplay() {
 
 // 处理猜测逻辑
 function handleGuess() {
+    // 获取并清理输入：去除首尾空格、转小写，然后清空输入框
     const guess = guessInput.value.trim().toLowerCase();
     guessInput.value = "";
     guessInput.focus();
 
+    // 空输入直接忽略
     if (!guess) return;
 
+    // 重复猜测拦截：如果已猜过相同内容，提示并提前返回
     if (wrongGuesses.includes(guess)) {
         dialogueBubble.textContent = "你已经猜过这个了！";
         return;
@@ -122,10 +125,13 @@ function handleGuess() {
 
     let isCorrect = false;
 
+    // === 命中判定 ===
+    // 1) 完全匹配整个单词 → 直接全部揭示
     if (guess === targetWord) {
         isCorrect = true;
         revealedWord = Array(targetWord.length).fill(true);
-    } 
+    }
+    // 2) 子串匹配 → 遍历所有出现位置，逐个揭示对应字母
     else if (targetWord.includes(guess)) {
         isCorrect = true;
         let startIndex = 0;
@@ -138,27 +144,35 @@ function handleGuess() {
         }
     }
 
+    // === 结果反馈 ===
     if (isCorrect) {
+        // 猜对：扣减生命值，随机选一条鼓励语录，更新表情
+        currentLives--;
         dialogueBubble.textContent = getRandomQuote('correct');
         updateCharacterEmotion('correct');
     } else {
+        // 猜错：记录错误 → 扣减生命 → 计算水位是否上涨
         wrongGuesses.push(guess);
         currentLives--;
-        
+
+        // 水位上涨判定：每段错误次数 ≥ 1 级水位，即触发上涨
         const errorsMade = maxLives - currentLives;
         const errorsPerStage = maxLives / 5;
         const newWaterStage = Math.floor(errorsMade / errorsPerStage);
 
         if (newWaterStage > currentWaterStage) {
+            // 水位上升：上限 5 级，触发惊恐反馈
             currentWaterStage = newWaterStage > 5 ? 5 : newWaterStage;
             dialogueBubble.textContent = getRandomQuote('waterUp');
             updateCharacterEmotion('waterUp');
         } else {
+            // 水位未上升：仅普通错误反馈
             dialogueBubble.textContent = getRandomQuote('wrong');
             updateCharacterEmotion('wrong');
         }
     }
 
+    // 更新界面并检查胜负
     updateDisplay();
     checkGameStatus();
 }
