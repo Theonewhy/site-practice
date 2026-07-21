@@ -42,33 +42,26 @@ photoUpload.addEventListener('change', function(e) {
 function applyPhoto() {
     if (gameData.userPhoto) {
         charImg.src = gameData.userPhoto;
-        charImg.style.display = 'block';
-        charEmoji.style.display = 'none';
     } else {
-        charImg.style.display = 'none';
-        charEmoji.style.display = 'block';
+        charImg.src = 'images/enze.jpg';
     }
+    charImg.style.display = 'block';
+    charEmoji.style.display = 'none';
 }
 
 // 更新角色表情或滤镜
 function updateCharacterEmotion(emotionStr) {
-    // 复原照片滤镜
-    charImg.style.filter = "none";
-    
     if (emotionStr === 'start') {
-        charEmoji.textContent = "🥺";
+        charImg.style.filter = "none";
     } else if (emotionStr === 'correct') {
-        charEmoji.textContent = "😃";
+        charImg.style.filter = "brightness(1.1) saturate(1.2)";
     } else if (emotionStr === 'wrong') {
-        charEmoji.textContent = "😨";
+        charImg.style.filter = "brightness(0.9) contrast(1.1)";
     } else if (emotionStr === 'waterUp') {
-        charEmoji.textContent = "😱";
-        charImg.style.filter = "sepia(0.8) hue-rotate(-30deg) saturate(2)"; // 惊恐偏红效果
+        charImg.style.filter = "sepia(0.8) hue-rotate(-30deg) saturate(2)";
     } else if (emotionStr === 'win') {
-        charEmoji.textContent = "🥰";
-        charImg.style.filter = "drop-shadow(0 0 10px gold)";
+        charImg.style.filter = "drop-shadow(0 0 10px gold) brightness(1.1)";
     } else if (emotionStr === 'lose') {
-        charEmoji.textContent = "😵";
         charImg.style.filter = "grayscale(100%)";
     }
 }
