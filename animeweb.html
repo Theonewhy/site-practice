@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- 让网页在手机端正常缩放 -->
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>南瓜动漫</title>
+
+  <!-- 引入 CSS -->
+  <link rel="stylesheet" href="css/amimeweb.css">
+
+  <!-- defer：等 HTML 加载完再运行 JavaScript -->
+  <script src="js/animeweb.js" defer></script>
+</head>
+
+<body>
+
+  <!-- =========================
+       顶部导航栏
+  ========================== -->
+  <header class="site-header">
+
+    <a class="logo" href="#">
+      <!-- 网站 Logo 图片 -->
+      <img
+        src="images/logo.png"
+        alt="南瓜动漫 Logo"
+        onerror="this.style.display='none'"
+      >
+
+      <!-- 没有 Logo 图片时显示文字 -->
+      <div class="logo-text">
+        <strong>南瓜动漫</strong>
+        <small>Just a little animation</small>
+      </div>
+    </a>
+
+    <!-- 电脑端导航菜单 -->
+    <nav class="main-nav" aria-label="主要导航">
+      <a class="nav-link active" href="#home">
+        <span>🏠</span>
+        首页
+      </a>
+
+      <button class="nav-link" data-coming-soon="日番页面">
+        <span>📺</span>
+        日番
+      </button>
+
+      <button class="nav-link" data-coming-soon="剧场版页面">
+        <span>🎞️</span>
+        剧场版
+      </button>
+
+      <button class="nav-link" data-coming-soon="AI 动漫页面">
+        <span>🤖</span>
+        AI动漫
+      </button>
+
+      <button class="nav-link" data-coming-soon="游戏页面">
+        <span>🎮</span>
+        游戏
+      </button>
+
+      <button class="nav-link" data-coming-soon="更多页面">
+        <span>⌄</span>
+        更多
+      </button>
+    </nav>
+
+    <!-- 导航栏右侧功能 -->
+    <div class="header-actions">
+
+      <button
+        class="icon-button"
+        aria-label="搜索"
+        data-coming-soon="搜索功能"
+      >
+        🔍
+      </button>
+
+      <button
+        class="icon-button"
+        aria-label="观看记录"
+        data-coming-soon="观看记录"
+      >
+        🕘
+      </button>
+
+      <button
+        class="icon-button account-button"
+        aria-label="账户"
+        data-coming-soon="登录注册"
+      >
+        👤
+      </button>
+
+      <button
+        class="download-button"
+        data-coming-soon="APP 下载"
+      >
+        APP下载
+      </button>
+
+    </div>
+
+  </header>
+
+  <!-- =========================
+       网页主体
+  ========================== -->
+  <main id="home">
+
+    <!-- 顶部横幅 -->
+    <section class="hero">
+
+      <img
+        class="hero-image"
+        src="images/banner.jpg"
+        alt="网站横幅"
+        onerror="this.style.display='none'"
+      >
+
+      <div class="hero-content">
+        <span class="hero-label">今日推荐</span>
+
+        <h1>欢迎来到南瓜动漫</h1>
+
+        <p>
+          这是一个用于练习 HTML、CSS 和 JavaScript 的动漫网站首页。
+        </p>
+
+        <button
+          class="primary-button"
+          id="browseButton"
+        >
+          开始浏览
+        </button>
+      </div>
+
+    </section>
+
+    <!-- =========================
+         番剧周表
+    ========================== -->
+    <section
+      class="content-section"
+      id="weeklySection"
+    >
+
+      <div class="section-heading">
+        <div>
+          <p class="section-label">WEEKLY</p>
+          <h2>番剧周表</h2>
+        </div>
+
+        <button
+          class="more-button"
+          data-coming-soon="完整番剧周表"
+        >
+          更多
+        </button>
+      </div>
+
+      <!-- 日期 Tab 按钮 -->
+      <div
+        class="day-tabs"
+        role="tablist"
+        aria-label="番剧日期"
+      >
+        <button class="day-tab active" data-day="monday">
+          周一
+        </button>
+
+        <button class="day-tab" data-day="tuesday">
+          周二
+        </button>
+
+        <button class="day-tab" data-day="wednesday">
+          周三
+        </button>
+
+        <button class="day-tab" data-day="thursday">
+          周四
+        </button>
+
+        <button class="day-tab" data-day="friday">
+          周五
+        </button>
+
+        <button class="day-tab" data-day="saturday">
+          周六
+        </button>
+
+        <button class="day-tab" data-day="sunday">
+          周日
+        </button>
+      </div>
+
+      <!-- 横向卡片区域 -->
+      <div class="rail">
+
+        <!-- 左滑按钮 -->
+        <button
+          class="rail-button rail-button-left"
+          aria-label="向左滑动"
+        >
+          ‹
+        </button>
+
+        <!-- JavaScript 会把卡片放在这里 -->
+        <div
+          class="card-row"
+          id="weeklyRow"
+        ></div>
+
+        <!-- 右滑按钮 -->
+        <button
+          class="rail-button rail-button-right"
+          aria-label="向右滑动"
+        >
+          ›
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         广告占位区域
+    ========================== -->
+    <section class="advertisement">
+
+      <div>
+        <span>ADVERTISEMENT</span>
+        <h3>广告位招租</h3>
+        <p>
+          这里以后可以放活动横幅、推广图片或者合作信息。
+        </p>
+      </div>
+
+      <button data-coming-soon="广告合作">
+        了解详情
+      </button>
+
+    </section>
+
+    <!-- =========================
+         最近大家在看
+    ========================== -->
+    <section class="content-section">
+
+      <div class="section-heading">
+        <div>
+          <p class="section-label">TRENDING</p>
+          <h2>最近大家在看</h2>
+        </div>
+
+        <button
+          class="more-button"
+          data-coming-soon="热门番剧榜单"
+        >
+          更多
+        </button>
+      </div>
+
+      <div class="rail">
+
+        <button
+          class="rail-button rail-button-left"
+          aria-label="向左滑动"
+        >
+          ‹
+        </button>
+
+        <!-- JavaScript 生成热门卡片 -->
+        <div
+          class="card-row"
+          id="trendingRow"
+        ></div>
+
+        <button
+          class="rail-button rail-button-right"
+          aria-label="向右滑动"
+        >
+          ›
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         新番推荐
+    ========================== -->
+    <section class="content-section">
+
+      <div class="section-heading">
+        <div>
+          <p class="section-label">NEW RELEASE</p>
+          <h2>新番推荐</h2>
+        </div>
+
+        <button
+          class="more-button"
+          data-coming-soon="新番列表"
+        >
+          更多
+        </button>
+      </div>
+
+      <div class="rail">
+
+        <button
+          class="rail-button rail-button-left"
+          aria-label="向左滑动"
+        >
+          ‹
+        </button>
+
+        <!-- JavaScript 生成推荐卡片 -->
+        <div
+          class="card-row"
+          id="recommendRow"
+        ></div>
+
+        <button
+          class="rail-button rail-button-right"
+          aria-label="向右滑动"
+        >
+          ›
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         经典专区
+    ========================== -->
+    <section class="content-section">
+
+      <div class="section-heading">
+        <div>
+          <p class="section-label">CLASSIC</p>
+          <h2>经典专区</h2>
+        </div>
+
+        <button
+          class="more-button"
+          data-coming-soon="经典番剧页面"
+        >
+          更多
+        </button>
+      </div>
+
+      <div class="rail">
+
+        <button
+          class="rail-button rail-button-left"
+          aria-label="向左滑动"
+        >
+          ‹
+        </button>
+
+        <!-- JavaScript 生成经典卡片 -->
+        <div
+          class="card-row"
+          id="classicRow"
+        ></div>
+
+        <button
+          class="rail-button rail-button-right"
+          aria-label="向右滑动"
+        >
+          ›
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================
+       页脚
+  ========================== -->
+  <footer class="site-footer">
+
+    <div>
+      <strong>南瓜动漫</strong>
+      <p>
+        一个用于学习前端开发的静态网页项目。
+      </p>
+    </div>
+
+    <div class="footer-links">
+      <button data-coming-soon="关于我们">关于我们</button>
+      <button data-coming-soon="联系我们">联系我们</button>
+      <button data-coming-soon="版权说明">版权说明</button>
+    </div>
+
+  </footer>
+
+  <!-- =========================
+       首次进入公告弹窗
+  ========================== -->
+  <div
+    class="modal-overlay"
+    id="noticeModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
+
+    <div class="modal-box">
+
+      <!-- 弹窗顶部装饰图片 -->
+      <div class="modal-illustration">
+
+        <img
+          src="images/notice-character.png"
+          alt="公告人物插图"
+          onerror="this.style.display='none'"
+        >
+
+        <span>📣</span>
+
+      </div>
+
+      <p class="modal-label">NOTICE</p>
+
+      <h2 id="modalTitle">网站公告</h2>
+
+      <p>
+        欢迎进入南瓜动漫。本网站目前只是前端学习项目，
+        视频播放、用户登录、搜索和评论功能仍在施工中。
+      </p>
+
+      <div class="modal-notice">
+        <strong>🚧 当前状态</strong>
+        <span>首页结构和基础交互已经完成。</span>
+      </div>
+
+      <p class="modal-small-text">
+        请使用自己拥有授权的图片和素材，避免让一次快乐练习升级成版权事故。
+      </p>
+
+      <button
+        class="modal-close-button"
+        id="closeModalButton"
+      >
+        我已了解
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- =========================
+       施工中提示
+  ========================== -->
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  >
+    🚧 功能施工中
+  </div>
+
+  <!-- 返回顶部按钮 -->
+  <button
+    class="back-to-top"
+    id="backToTopButton"
+    aria-label="返回顶部"
+  >
+    ↑
+  </button>
+
+</body>
+</html>

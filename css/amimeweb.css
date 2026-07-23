@@ -1,0 +1,1023 @@
+/* =========================
+   网站颜色和通用变量
+========================== */
+:root {
+  --background: #090a0f;
+  --surface: #11131a;
+  --surface-light: #181b24;
+  --border: rgba(255, 255, 255, 0.08);
+
+  --text-main: #f5f5f7;
+  --text-muted: #989ba6;
+
+  --primary: #e44f73;
+  --primary-dark: #b73556;
+
+  --header-height: 76px;
+  --page-width: 1480px;
+}
+
+/* 统一盒模型 */
+* {
+  box-sizing: border-box;
+}
+
+/* 平滑跳转 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 网页主体样式 */
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  color: var(--text-main);
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(228, 79, 115, 0.1),
+      transparent 28%
+    ),
+    var(--background);
+
+  font-family:
+    "Microsoft YaHei",
+    "PingFang SC",
+    Arial,
+    sans-serif;
+
+  overflow-x: hidden;
+}
+
+/* 弹窗打开时禁止背景滚动 */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* 按钮和链接统一字体 */
+button,
+a {
+  font: inherit;
+}
+
+/* 按钮重置 */
+button {
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* 链接重置 */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 图片默认行为 */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* =========================
+   顶部导航栏
+========================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  height: var(--header-height);
+  padding: 0 26px;
+
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  background: rgba(9, 10, 15, 0.92);
+  border-bottom: 1px solid var(--border);
+
+  backdrop-filter: blur(18px);
+}
+
+/* Logo 区域 */
+.logo {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  width: 52px;
+  height: 52px;
+
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-text strong {
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.logo-text small {
+  margin-top: 2px;
+
+  color: var(--text-muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+/* 中间导航 */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-link {
+  padding: 10px 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: var(--text-muted);
+  background: transparent;
+  border-radius: 10px;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary);
+  background: rgba(228, 79, 115, 0.1);
+}
+
+/* 导航栏右侧按钮 */
+.header-actions {
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-button {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  background: transparent;
+  border-radius: 50%;
+
+  font-size: 18px;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.icon-button:hover {
+  background: var(--surface-light);
+  transform: translateY(-2px);
+}
+
+.account-button {
+  background: rgba(228, 79, 115, 0.25);
+}
+
+.download-button,
+.primary-button {
+  padding: 12px 22px;
+
+  color: #ffffff;
+  background: var(--primary);
+  border-radius: 999px;
+
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.download-button:hover,
+.primary-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   主体宽度
+========================== */
+main {
+  width: min(var(--page-width), calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* =========================
+   顶部横幅
+========================== */
+.hero {
+  position: relative;
+
+  min-height: 390px;
+  margin-top: 28px;
+  padding: 54px;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 26px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(13, 14, 20, 0.98) 10%,
+      rgba(13, 14, 20, 0.65) 60%,
+      rgba(13, 14, 20, 0.2)
+    ),
+    linear-gradient(
+      135deg,
+      #221521,
+      #141829
+    );
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+
+  max-width: 620px;
+}
+
+.hero-label,
+.section-label,
+.modal-label {
+  color: var(--primary);
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.hero h1 {
+  margin: 14px 0;
+
+  font-size: clamp(36px, 6vw, 68px);
+  line-height: 1.05;
+}
+
+.hero p {
+  max-width: 580px;
+  margin-bottom: 28px;
+
+  color: #c5c7d0;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+/* =========================
+   内容区域
+========================== */
+.content-section {
+  padding: 72px 0 0;
+  scroll-margin-top: 100px;
+}
+
+.section-heading {
+  margin-bottom: 22px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.section-heading h2 {
+  margin: 5px 0 0;
+  font-size: 30px;
+}
+
+.more-button {
+  padding: 10px 22px;
+
+  color: #ffffff;
+  background: rgba(228, 79, 115, 0.75);
+  border-radius: 999px;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.more-button:hover {
+  background: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   日期 Tab
+========================== */
+.day-tabs {
+  margin-bottom: 24px;
+
+  display: flex;
+  gap: 8px;
+
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.day-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.day-tab {
+  flex: 0 0 auto;
+
+  padding: 10px 22px;
+
+  color: var(--text-muted);
+  background: transparent;
+  border-radius: 999px;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.day-tab:hover,
+.day-tab.active {
+  color: #ffffff;
+  background: rgba(228, 79, 115, 0.72);
+}
+
+/* =========================
+   横向滚动区域
+========================== */
+.rail {
+  position: relative;
+}
+
+/* 横向卡片容器 */
+.card-row {
+  display: flex;
+  gap: 18px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 4px 2px 18px;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+
+  scrollbar-width: none;
+
+  cursor: grab;
+  user-select: none;
+}
+
+.card-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* 鼠标拖动时 */
+.card-row.dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+/* 左右滑动按钮 */
+.rail-button {
+  position: absolute;
+  top: 40%;
+  z-index: 5;
+
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+  place-items: center;
+
+  color: #ffffff;
+  background: rgba(12, 13, 18, 0.88);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  font-size: 30px;
+
+  backdrop-filter: blur(8px);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.rail-button:hover {
+  background: var(--primary);
+  transform: scale(1.08);
+}
+
+.rail-button-left {
+  left: -20px;
+}
+
+.rail-button-right {
+  right: -20px;
+}
+
+/* =========================
+   动漫卡片
+========================== */
+.anime-card {
+  flex: 0 0 196px;
+  scroll-snap-align: start;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.anime-card:hover {
+  transform: translateY(-7px);
+}
+
+/* 卡片封面区域 */
+.card-cover {
+  position: relative;
+
+  aspect-ratio: 3 / 4;
+
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #252a3a,
+      #171922
+    );
+}
+
+/* 图片铺满封面 */
+.card-cover img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.35s ease;
+}
+
+.anime-card:hover .card-cover img {
+  transform: scale(1.05);
+}
+
+/* 没有图片时显示编号 */
+.cover-placeholder {
+  position: absolute;
+  inset: 0;
+
+  display: grid;
+  place-items: center;
+
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 48px;
+  font-weight: 800;
+}
+
+/* 卡片右上角分级标签 */
+.age-rating {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  padding: 5px 9px;
+
+  color: #ffffff;
+  background: rgba(204, 158, 36, 0.9);
+  border-radius: 6px;
+
+  font-size: 11px;
+
+  backdrop-filter: blur(6px);
+}
+
+/* 不同分级颜色 */
+.age-rating.rating-r18 {
+  background: rgba(153, 63, 104, 0.92);
+}
+
+.age-rating.rating-general {
+  background: rgba(66, 132, 84, 0.92);
+}
+
+/* 集数信息 */
+.episode-info {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  padding: 26px 10px 10px;
+
+  color: #ffffff;
+  background:
+    linear-gradient(
+      transparent,
+      rgba(0, 0, 0, 0.88)
+    );
+
+  font-size: 12px;
+}
+
+/* 卡片标题 */
+.anime-card h3 {
+  margin: 13px 0 5px;
+
+  overflow: hidden;
+
+  font-size: 15px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 卡片描述 */
+.anime-card p {
+  margin: 0;
+
+  overflow: hidden;
+
+  color: var(--text-muted);
+  font-size: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* =========================
+   广告占位区域
+========================== */
+.advertisement {
+  margin-top: 72px;
+  padding: 30px 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  border: 1px dashed rgba(228, 79, 115, 0.5);
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(228, 79, 115, 0.15),
+      rgba(67, 84, 156, 0.14)
+    );
+}
+
+.advertisement span {
+  color: var(--primary);
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.advertisement h3 {
+  margin: 8px 0;
+  font-size: 24px;
+}
+
+.advertisement p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.advertisement button {
+  flex-shrink: 0;
+
+  padding: 11px 20px;
+
+  background: var(--surface-light);
+  border-radius: 999px;
+}
+
+/* =========================
+   页脚
+========================== */
+.site-footer {
+  width: min(var(--page-width), calc(100% - 48px));
+  margin: 90px auto 0;
+  padding: 34px 0 44px;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}
+
+.site-footer strong {
+  color: var(--text-main);
+  font-size: 19px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 8px;
+}
+
+.footer-links button {
+  padding: 8px 12px;
+
+  color: var(--text-muted);
+  background: transparent;
+}
+
+.footer-links button:hover {
+  color: var(--primary);
+}
+
+/* =========================
+   公告弹窗
+========================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  padding: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.76);
+  backdrop-filter: blur(5px);
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+/* 弹窗关闭状态 */
+.modal-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* 弹窗主体 */
+.modal-box {
+  position: relative;
+
+  width: min(490px, 100%);
+  padding: 78px 34px 34px;
+
+  text-align: center;
+
+  background: #12141c;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.55);
+
+  animation: modal-enter 0.4s ease;
+}
+
+/* 弹窗进入动画 */
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 弹窗顶部插图 */
+.modal-illustration {
+  position: absolute;
+  top: -64px;
+  left: 50%;
+
+  width: 145px;
+  height: 125px;
+
+  display: grid;
+  place-items: center;
+
+  transform: translateX(-50%);
+
+  font-size: 78px;
+}
+
+.modal-illustration img {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.modal-box h2 {
+  margin: 10px 0 14px;
+  font-size: 30px;
+}
+
+.modal-box > p {
+  color: #c1c3cd;
+  line-height: 1.8;
+}
+
+.modal-notice {
+  margin: 22px 0;
+  padding: 14px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  background: rgba(228, 79, 115, 0.08);
+  border: 1px solid rgba(228, 79, 115, 0.22);
+  border-radius: 13px;
+}
+
+.modal-notice span {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.modal-small-text {
+  font-size: 12px;
+}
+
+.modal-close-button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px;
+
+  color: #ffffff;
+  background: var(--primary);
+  border-radius: 999px;
+
+  font-weight: 800;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.modal-close-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   施工中提示
+========================== */
+.toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 900;
+
+  max-width: 320px;
+  padding: 14px 20px;
+
+  color: #ffffff;
+  background: #222530;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  box-shadow:
+    0 15px 50px rgba(0, 0, 0, 0.38);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translateY(20px);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   返回顶部按钮
+========================== */
+.back-to-top {
+  position: fixed;
+  right: 26px;
+  bottom: 84px;
+  z-index: 80;
+
+  width: 46px;
+  height: 46px;
+
+  display: grid;
+  place-items: center;
+
+  color: #ffffff;
+  background: var(--primary);
+  border-radius: 50%;
+
+  font-size: 22px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(15px);
+
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease,
+    transform 0.2s ease;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* =========================
+   平板适配
+========================== */
+@media (max-width: 1050px) {
+  .main-nav {
+    display: none;
+  }
+
+  .hero {
+    min-height: 350px;
+    padding: 42px;
+  }
+
+  .anime-card {
+    flex-basis: 180px;
+  }
+}
+
+/* =========================
+   手机端适配
+========================== */
+@media (max-width: 700px) {
+  :root {
+    --header-height: 66px;
+  }
+
+  .site-header {
+    padding: 0 14px;
+    gap: 10px;
+  }
+
+  .logo-text strong {
+    font-size: 16px;
+  }
+
+  .logo-text small {
+    display: none;
+  }
+
+  .header-actions {
+    gap: 4px;
+  }
+
+  .header-actions .icon-button:nth-child(2),
+  .download-button {
+    display: none;
+  }
+
+  .icon-button {
+    width: 38px;
+    height: 38px;
+  }
+
+  main {
+    width: min(100% - 28px, var(--page-width));
+  }
+
+  .hero {
+    min-height: 330px;
+    margin-top: 16px;
+    padding: 28px;
+
+    border-radius: 19px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .content-section {
+    padding-top: 52px;
+  }
+
+  .section-heading h2 {
+    font-size: 24px;
+  }
+
+  .more-button {
+    padding: 8px 15px;
+    font-size: 13px;
+  }
+
+  .anime-card {
+    flex-basis: 150px;
+  }
+
+  .rail-button {
+    display: none;
+  }
+
+  .advertisement {
+    padding: 24px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-footer {
+    width: min(100% - 28px, var(--page-width));
+
+    flex-direction: column;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+  }
+
+  .modal-box {
+    padding: 70px 22px 24px;
+  }
+
+  .modal-box h2 {
+    font-size: 25px;
+  }
+
+  .toast {
+    right: 14px;
+    bottom: 14px;
+    left: 14px;
+
+    max-width: none;
+    text-align: center;
+  }
+
+  .back-to-top {
+    right: 16px;
+    bottom: 76px;
+  }
+}
